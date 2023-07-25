@@ -1,0 +1,53 @@
+
+
+
+import csv
+import pandas as pd
+import csv
+import pandas as pd
+
+
+
+
+file_path = r"C:\Users\jasmi\Downloads\python-challenge\PyPoll\Resources\election_data.csv"
+
+
+df = pd.read_csv(r"C:\Users\jasmi\Downloads\python-challenge\PyPoll\Resources\election_data.csv")    
+
+
+# In[4]:
+
+
+print(df)
+
+
+
+
+
+total_votes_cast = df.shape[0]
+
+print("Total number of votes cast:", total_votes_cast)
+candidates_list = df['Candidate'].unique()
+print("List of candidates who received votes:")
+print(candidates_list)
+
+people_vote = df['Candidate'].value_counts()
+
+
+percentage_vote = (people_vote / total_votes_cast) * 100
+
+
+
+print(percentage_vote)
+
+candidate_votes = df['Candidate'].value_counts()
+
+
+print("Total number of votes each candidate won:")
+print(candidate_votes)
+
+
+
+
+
+
