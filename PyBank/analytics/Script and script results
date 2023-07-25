@@ -1,43 +1,56 @@
+imort csv
+import pandas as pd
 import csv
 import pandas as pd
+​
+​
 file_path = (r"C:\Users\jasmi\Downloads\Starter_Code\Starter_Code\PyBank\Resources\budget_data.csv")
 df = pd.read_csv(r"C:\Users\jasmi\Downloads\Starter_Code\Starter_Code\PyBank\Resources\budget_data.csv")
 print(df)
+      Date  Profit/Losses
+0   Jan-10        1088983
+1   Feb-10        -354534
+2   Mar-10         276622
+3   Apr-10        -728133
+4   May-10         852993
+..     ...            ...
+81  Oct-16        -729004
+82  Nov-16        -112209
+83  Dec-16         516313
+84  Jan-17         607208
+85  Feb-17         382539
+
+[86 rows x 2 columns]
 total_months = df.shape[0]
 net_total = df['Profit/Losses'].sum()
 df['Profit/Losses Change'] = df['Profit/Losses'].diff()
 average_changes = df['Profit/Losses Change'].mean()
-
 index_max_increase = df['Profit/Losses Change'].idxmax()
-
+​
 index_max_decrease = df['Profit/Losses Change'].idxmin()
-
+​
 # Get the date and amount of the greatest decrease in profits
 date_max_decrease = df.loc[index_max_decrease, 'Date']
 amount_max_decrease = df.loc[index_max_decrease, 'Profit/Losses Change']
-
-
-
+​
+​
+​
 date_max_increase = df.loc[index_max_increase, 'Date']
 amount_max_increase = df.loc[index_max_increase, 'Profit/Losses Change']
-
-
 print("Greatest decrease in profits:")
 print(f"Date: {date_max_decrease}, Amount: {amount_max_decrease}")
-
+​
 print(f"Date: {date_max_increase}, Amount: {amount_max_increase}")
 print("Changes in Profit/Losses over the entire period:")
 print("\nAverage of the changes in Profit/Losses:", average_changes)
 print("Net total amount of Profit/Losses over the entire period:", net_total)
 print("Total number of months in the dataset:", total_months)
+​
+Greatest decrease in profits:
+Date: Feb-14, Amount: -1825558.0
+Date: Aug-16, Amount: 1862002.0
+Changes in Profit/Losses over the entire period:
 
-   
-    
-    
-
-    
-
-
-
-    
-    
+Average of the changes in Profit/Losses: -8311.105882352942
+Net total amount of Profit/Losses over the entire period: 22564198
+Total number of months in the dataset: 86
